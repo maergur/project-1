@@ -5,6 +5,9 @@ public class MineMatrix {
     int rows;
     int cols;
     int totalMines;
+
+    // Mayın tarlası için constructor oluşturuyoruz.
+
     public MineMatrix(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
@@ -13,13 +16,14 @@ public class MineMatrix {
         mineField = new char[rows][cols];
         userField = new char[rows][cols];
 
-            initializeFields();
+            fieldCreator();
             placeMines();
 
     }
 
+  // Kullanıcadan gelen veri ile i / j kadar matrisimizi oluşturuyoruz.
 
-    public void initializeFields() {
+    public void fieldCreator() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 mineField[i][j] = '-';
@@ -30,6 +34,9 @@ public class MineMatrix {
    public void placeMines() {
         Random random = new Random();
         int minesPlaced = 0;
+
+// Java random kütüphanesi kullanarak mayınları yerleştiriyoruz "totalMines"
+// sayısına ulaşana kadar alanı dolduruyoruz.
 
         while (minesPlaced < totalMines) {
             int randRow = random.nextInt(rows);
@@ -42,6 +49,8 @@ public class MineMatrix {
         }
     }
 
+    // Oyun bittiğinde kullanıcıya mayınların yerine gösteriyoruz.
+
     public void revealMines() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -52,6 +61,8 @@ public class MineMatrix {
         }
     }
 
+ // Her seçimden sonra kullanıcıya oyunun durumunu göstermek üzere ekrana bastırıyoruz.
+
     public void printUserField() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -61,15 +72,9 @@ public class MineMatrix {
         }
     }
 
-   public boolean isValidCoordinate(int row, int col) {
-        return row >= 0 && row < rows && col >= 0 && col < cols;
-    }
+    // Kullanıcının seçtiği satır / sütun kombinasyonun etrafını tarıyoruz.
 
-   public boolean isMine(int row, int col) {
-        return mineField[row][col] == '*';
-    }
-
-   public int countAdjacentMines(int row, int col) {
+    public int countAdjacentMines(int row, int col) {
         int count = 0;
 
         for (int i = row - 1; i <= row + 1; i++) {
@@ -80,6 +85,16 @@ public class MineMatrix {
             }
         }
         return count;
+    }
+
+    // Koordinat ve mayın kontrollerini aşağıda tanımladık.
+
+   public boolean isValidCoordinate(int row, int col) {
+        return row >= 0 && row < rows && col >= 0 && col < cols;
+    }
+
+   public boolean isMine(int row, int col) {
+        return mineField[row][col] == '*';
     }
 
 }

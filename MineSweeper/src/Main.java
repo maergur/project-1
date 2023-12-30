@@ -1,11 +1,15 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Mayın Tarlasına Hoş Geldiniz!");
+        System.out.println("Mayın Tarlası'na Hoş Geldiniz!");
         playGame();
     }
     public static void playGame() {
-        
+
+        /* Kullanıcıdan aldığımız satır / sütun 2'den küçük olduğu sürece tekrar giriş istiyoruz.
+         Başta yaptığımız rows = 0, cols = 0 sebebi zaten 2'den küçük olduğu için döngü kullanıcıya otomatik olarak
+         satır / sütun kombinasyonu sormak zorunda kalacak. */
+
         Scanner inp = new Scanner(System.in);
         int rows = 0;
         int cols = 0;
@@ -21,6 +25,8 @@ public class Main {
                 System.out.println("Matris en az 2x2 boyutunda olmalıdır. Lütfen tekrar seçim yapınız!");
             }
         }
+
+        // OOP kullaranak oluşturduğumuz MineMatrix sınıfından bir matris oluşturup oyunumuza başlıyoruz.
 
         MineMatrix game = new MineMatrix(rows, cols);
 
@@ -51,10 +57,11 @@ public class Main {
             }
 
             else {
-                int adjacentMines = game.countAdjacentMines(selectedRow, selectedCol);
-                game.userField[selectedRow][selectedCol] = (char) (adjacentMines + '0');
+                int adjMines = game.countAdjacentMines(selectedRow, selectedCol);
+                game.userField[selectedRow][selectedCol] = (char) (adjMines + '0');
 
-                // Oyunu kazanma kontrolü
+                // Oyunu kazanıp kazanmadığını kontrol etmek için boolean bir kontrol kullanıyoruz.
+
                 boolean allCellsOpened = true;
                 for (int i = 0; i < rows; i++) {
                     for (int j = 0; j < cols; j++) {
