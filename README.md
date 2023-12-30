@@ -1,3 +1,7 @@
+Mine Sweeper projesi Patika + 3. hafta bitirme projesi olarak hazırlanmıştır.
+
+Proje, Java JDK 21 ve IntelliJ IDEA ile tamamlanmıştır.
+
 Bu proje aşağıdaki gereksinimler belirtilerek oluşturulmuştur:
 
 Oyun Kuralları:
