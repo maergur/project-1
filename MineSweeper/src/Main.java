@@ -15,10 +15,10 @@ public class Main {
         int cols = 0;
 
         while (rows < 2 || cols < 2) {
-            System.out.print("Mayın tarlasının satır sayısını giriniz: ");
+            System.out.print("Mayın Tarlası'nın satır sayısını giriniz: ");
             rows = inp.nextInt();
 
-            System.out.print("Mayın tarlasının sütun sayısını giriniz: ");
+            System.out.print("Mayın Tarlası'nın sütun sayısını giriniz: ");
             cols = inp.nextInt();
 
             if (rows < 2 || cols < 2) {
